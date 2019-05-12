@@ -1,0 +1,6 @@
+low | glucose | muscles
+high | glucose | liver
+high | pyruvate | muscles
+high | acetyl coa | muscles
+high | ATP | muscles
+low | oxaloacetate | liver

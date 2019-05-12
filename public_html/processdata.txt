@@ -1,0 +1,6 @@
+glycolysis | pyruvate
+krebs cycle | ATP
+gluconeogenesis | glucose
+urea cycle | urea
+photosynthesis | ATP
+calvin cycle | glucose

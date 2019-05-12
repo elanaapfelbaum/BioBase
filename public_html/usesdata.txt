@@ -1,0 +1,14 @@
+photosynthesis | PLP
+photosynthesis | ubiquinone
+photosynthesis | pyruvate carboxylase
+glycolysis | pyruvate kinase
+glycolysis | pyruvate carboxylase
+krebs cycle | fumarase
+krebs cycle | pyruvate dehydrogenase complex
+gluconeogenesis | pyruvate carboxylase
+gluconeogenesis | alphaketoglutarate dehydrogenase
+gluconeogenesis | fumarase
+urea cycle | PLP
+urea cycle | succinyl coa synthetase
+calvin cycle | succinate dehydrogenase
+calvin cycle | pyruvate kinase

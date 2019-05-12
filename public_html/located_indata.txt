@@ -1,0 +1,10 @@
+pyruvate kinase | cytoplam | NULL
+pyruvate carboxylase | cytoplasm | NULL
+ubiquinone | mitochondria | intermembrane space
+fumarase | cytoplasm | NULL
+pyruvate dehydrogenase complex | mitochondria | inner membrane
+pyruvate carboxylase | chloroplast | stroma
+PLP | chloroplast | thylakoid membrane
+alphaketoglutarate dehydrogenase | mitochondira | outer membrane
+succinyl coa synthetase | cytoplasm | NULL
+succinate dehydrogenase | mitrochondira | intermembrane space

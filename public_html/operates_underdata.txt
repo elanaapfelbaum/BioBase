@@ -1,0 +1,6 @@
+glycolysis | high | glucose
+krebs cycle | high | pyruvate
+gluconeogenesis | low | glucose
+urea cycle | high | acetyl coa
+photosynthesis | high | ATP
+calvin cycle | low | oxaloacetate

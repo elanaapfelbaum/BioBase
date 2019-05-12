@@ -1,0 +1,19 @@
+oxaloacetate | high
+fumarate | high
+malate | high
+alpha ketoglutarate | high
+glucose | low
+pyruvate | high
+phosphoenolpyruvate | high
+ATP | low
+ADP | high
+NADH | low
+acetyl coa | high
+glucose-6-phosphate | high
+2-phosphoglycerate | high
+dihydroxyacetone phosphate | low
+succinyl coa | low
+succinate | low
+cytochrome c | high
+quinone | low
+urea | low

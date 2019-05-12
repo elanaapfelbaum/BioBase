@@ -1,0 +1,10 @@
+pyruvate kinase | sn2
+pyruvate carboxylase | hydrolysis
+ubiquinone | oxydation
+fumarase | hydration
+pyruvate dehydrogenase complex | hydrolysis
+pyruvase carboxylase | sn1
+PLP | hydrolysis
+alphaketoglutarate dehydrogenase | reduction
+succinyl coa synthetase | carbocation
+succinate dehydrogenase | disulide

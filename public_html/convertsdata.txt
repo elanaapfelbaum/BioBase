@@ -1,0 +1,10 @@
+pyruvate kinase | pyruvate | fumarate | ATP | negative
+pyruvate carboxylase | fumarate | oxaloacetate | NADH | negative
+ubiquinone | quinone | cytochrome c | NULL | positive
+fumarase | fumarate | malate | NULL | negative
+pyruvate dehydrogenase complex | glucose | pyruvate | FADH2 | negative
+pyruvate carboxylase | phosphoenolpyruvate | acetyl coa | NADH | negative
+PLP | acetyl coa | succinyl coa | NADH | positive
+alphaketoglutarate dehydrogenase | alpha ketoglutarate | 2-phosphoglycerate | ATP | positive
+succinyl coa synthetase | dihydroxyacetone phosphate | succinyl coa | ATP | negative
+succinate dehydrogenase | ADP | ATP | ATP | positive
