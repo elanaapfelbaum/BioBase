@@ -1,6 +1,6 @@
 # BioBase
 # Home of Biochemical Processes
-This is a database that contains information about biochemical processes that occur in the body, such as the conditions under
+This is a SQL database that contains information about biochemical processes that occur in the body, such as the conditions under
 which they occur, the associated enzymes and intermediate compunds, as well as the location in which each steps occur.
 
 Each process is often studied in isolation from the rest of the body systems, however the interaction between the systems are 
