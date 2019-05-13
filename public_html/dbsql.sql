@@ -24,7 +24,8 @@ create table condition(
        compound	        varchar(100),
        prime_location	varchar(100),
        primary key(concentration, compound),
-       foreign key(compound) references intermediate(intermediate_name));
+       foreign key(compound) references intermediate(intermediate_name),
+       foreign key(prime_location) references location(organelle));
 
 create table operates_under(
        process_name	varchar(100),
