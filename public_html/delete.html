@@ -11,10 +11,22 @@
     <h1><strong>~BioBase~</strong></h1>
     <h2><i>Home of Biochemical Processes</i></h2>
     <h3>Delete from the Database!</h3>
+    <h4>Choose from the options below</h4>
     <form action = "cgi-bin/delete.py" method = "get">
 
-     Delete from:
-      <select name="insert_table">
+      <b>Delete an enzyme mechanism</b><br>
+      Enzyme: <input type = "text" name = "enzyme_name">
+      <br><br>
+      
+      <b>Delete a process</b><br>
+      Process: <input type = "text" name = "process_name">
+      <br><br>
+
+      <b>Delete an enzyme from a process</b><br>
+      Enzyme: <input type = "text" name = "enzyme_name2">
+      Process: <input type = "text" name = "process_name2">
+
+      <!-- <select name="insert_table">
         <option value = ""> </option>
         <option value = "process">Process</option>
         <option value ="enzyme">Enzyme</option>
@@ -23,7 +35,7 @@
         <option value = "condition">Condition</option>
       </select>
       Where: <input type = "text" name = "delete_condition">
-      <br><br>
+      <br><br> -->
 
       <input type="submit" value = "Submit"/>
     </form>

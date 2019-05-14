@@ -11,9 +11,26 @@
     <h1><strong>~BioBase~</strong></h1>
     <h2><i>Home of Biochemical Processes</i></h2>
     <h3>Update the Database!</h3>
+    <h4>Choose from the options below!</h4>
     <form action = "cgi-bin/project.py" method = "get">
-      Update:
-      <select name = "update_table">
+      <b> Change product for an enzyme mechanism</b><br>
+      Enzyme:<input type = "text" name = "enzyme_name">
+      Product:<input type = "text" name = "product_name">
+      <br><br>
+      
+      <b> Change enzyme mechanism</b><br>
+      Enzyme:<input type = "text" name = "enzyme_name2">
+      Mechanism:<input type = "text" name = "mechanism_name">
+      <br><br>
+
+      <b>Change process condition</b><br>
+      Process:<input type = "text" name = "process_name">
+      Concentration:<input type = "text" name = "concentration">
+      Compound:<input type = "text" name = "compound_name">
+      <br><br>
+      
+      
+     <!--<select name = "update_table">
         <option value = ""> </option>
         <option value = "process">Process</option>
         <option value ="enzyme">Enzyme</option>
@@ -22,7 +39,7 @@
         <option value = "condition">Condition</option>
       </select>
       Where: <input type = "text" name = "update_condition">
-      <br><br>
+      <br><br> -->
 
       <input type="submit" value = "Submit"/>
     </form>

@@ -16,8 +16,6 @@ svalues = svalues[:-2]
 cnx = mysql.connector.connect(user='eapfelba', host = 'localhost', database='eapfelba1', password='chumash1000')
 query=""
 cursor = cnx.cursor()
-#query = ("select * from enzyme")
-#cursor.execute(query)
 
 # inserting into a table
 # need to also check if not the right form... right amount of attributes for that table
