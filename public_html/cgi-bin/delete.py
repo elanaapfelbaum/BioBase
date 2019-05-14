@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import cgi, cgitb
+import cgi
 import mysql.connector
 
 form = cgi.FieldStorage()
@@ -19,10 +19,10 @@ if enzyme_name:
     query = ('delete from converts where enzyme_name = "' + enzyme_name + '"')
 
 if process_name:
-    query = ("delete from process where process_name = " + process_name)
+    query = ('delete from process where process_name = "' + process_name + '"')
 
 if process_name2 and enzyme_name2:
-    query = ("delete from uses where process_name = " + process_name2 + " and enzyme_name = " + enzyme_name2)
+    query = ('delete from uses where process_name = "' + process_name2 + '" and enzyme_name = "' + enzyme_name2 + '"')
 
 
 cursor.execute(query)
