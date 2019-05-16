@@ -8,7 +8,7 @@ search_process1 = form.getvalue('search_process1')
 search_process2 = form.getvalue('search_process2')
 
 
-cnx = mysql.connector.connect(user='eapfelba', database='eapfelba1', host='localhost', password='chumash1000')
+cnx = mysql.connector.connect(user='eapfelba', database='eapfelba2', host='localhost', password='chumash1000')
 cursor = cnx.cursor()
 query = "select * from enzyme"
 

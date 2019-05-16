@@ -12,7 +12,7 @@ process_name = form.getvalue('process_name')
 concentration = form.getvalue('concentration')
 compound_name = form.getvalue('compound_name')
 
-cnx = mysql.connector.connect(user='eapfelba', database='eapfelba1', host='localhost', password='chumash1000')
+cnx = mysql.connector.connect(user='eapfelba', database='eapfelba2', host='localhost', password='chumash1000')
 cursor = cnx.cursor()
 query = "select * from enzyme"
 

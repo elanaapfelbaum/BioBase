@@ -8,8 +8,9 @@ enzyme_name = form.getvalue('enzyme_name')#.strip()
 process_name = form.getvalue('process_name')#.strip()
 enzyme_name2 = form.getvalue('enzyme_name2')#.strip()
 process_name2 = form.getvalue('process_name2')#.strip()
+enzyme_name3 = form.getvalue('enzyme_name3')
 
-cnx = mysql.connector.connect(user='eapfelba', database='eapfelba1', host='localhost', password='chumash1000')
+cnx = mysql.connector.connect(user='eapfelba', database='eapfelba2', host='localhost', password='chumash1000')
 query = ""
 cursor = cnx.cursor()
 #query = "select * from enzyme"
@@ -18,6 +19,9 @@ cursor = cnx.cursor()
 if enzyme_name:
     query = ('delete from converts where enzyme_name = "' + enzyme_name + '"')
 
+if enzyme_name3:
+    query = ('delete from enzyme where enzyme_name = "' + enzyme_name3 + '"')
+    
 if process_name:
     query = ('delete from process where process_name = "' + process_name + '"')
 

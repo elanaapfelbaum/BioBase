@@ -17,39 +17,39 @@ create table process(
        process_name varchar(100),
        goal_product varchar(100),
        primary key(process_name),
-       foreign key(goal_product) references intermediate(intermediate_name));
+       foreign key(goal_product) references intermediate(intermediate_name) on delete cascade);
 
 create table condition(
        concentration	varchar(50),
        compound	        varchar(100),
        prime_location	varchar(100),
        primary key(concentration, compound),
-       foreign key(compound) references intermediate(intermediate_name),
-       foreign key(prime_location) references location(organelle));
+       foreign key(compound) references intermediate(intermediate_name) on delete cascade,
+       foreign key(prime_location) references location(organelle) on delete cascade);
 
 create table operates_under(
        process_name	varchar(100),
        concentration 	varchar(100),
        compound		varchar(100),
        primary key(process_name, concentration, compound),
-       foreign key(process_name) references process(process_name),
-       foreign key(concentration) references condition(concentration),
-       foreign key(compound) references condition(compound)); 
+       foreign key(process_name) references process(process_name) on delete cascade,
+       foreign key(concentration) references condition(concentration) on delete cascade,
+       foreign key(compound) references condition(compound) on delete cascade); 
        
 create table uses(
        process_name varchar(100),
        enzyme_name  varchar(100),
        primary key(process_name, enzyme_name),
-       foreign key(process_name) references process(process_name),
-       foreign key(enzyme_name) references enzyme(enzyme_name));
+       foreign key(process_name) references process(process_name) on delete cascade,
+       foreign key(enzyme_name) references enzyme(enzyme_name) on delete cascade);
 
 create table located_in(
        enzyme_name varchar(100),
        organelle   varchar(100),
        substructure varchar(100),
        primary key(enzyme_name, organelle, substructure),
-       foreign key(enzyme_name) references enzyme(enzyme_name),
-       foreign key(organelle) references location(organelle));
+       foreign key(enzyme_name) references enzyme(enzyme_name) on delete cascade,
+       foreign key(organelle) references location(organelle) on delete cascade);
 
 create table converts(
        enzyme_name varchar(100),
@@ -58,9 +58,9 @@ create table converts(
        energy_compounds varchar(100),
        deltaG varchar(100),
        primary key(enzyme_name, reactant_name),
-       foreign key(enzyme_name) references enzyme(enzyme_name),
-       foreign key(reactant_name) references intermediate(intermediate_name),
-       foreign key(product_name) references intermediate(intermediate_name));
+       foreign key(enzyme_name) references enzyme(enzyme_name) on delete cascade,
+       foreign key(reactant_name) references intermediate(intermediate_name) on delete cascade,
+       foreign key(product_name) references intermediate(intermediate_name) on delete cascade);
 
 
 load data local infile 'enzymedata.txt' into table enzyme fields terminated by ' | ' lines terminated by '\n';

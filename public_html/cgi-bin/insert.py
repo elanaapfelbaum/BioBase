@@ -13,7 +13,7 @@ for value in values:
     svalues += "'" + value.strip() + "', "
 svalues = svalues[:-2]
 
-cnx = mysql.connector.connect(user='eapfelba', host = 'localhost', database='eapfelba1', password='chumash1000')
+cnx = mysql.connector.connect(user='eapfelba', host = 'localhost', database='eapfelba2', password='chumash1000')
 query=""
 cursor = cnx.cursor()
 
