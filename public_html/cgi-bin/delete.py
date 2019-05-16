@@ -4,10 +4,10 @@ import cgi
 import mysql.connector
 
 form = cgi.FieldStorage()
-enzyme_name = form.getvalue('enzyme_name')
-process_name = form.getvalue('process_name')
-enzyme_name2 = form.getvalue('enzyme_name2')
-process_name2 = form.getvalue('process_name2')
+enzyme_name = form.getvalue('enzyme_name')#.strip()
+process_name = form.getvalue('process_name')#.strip()
+enzyme_name2 = form.getvalue('enzyme_name2')#.strip()
+process_name2 = form.getvalue('process_name2')#.strip()
 
 cnx = mysql.connector.connect(user='eapfelba', database='eapfelba1', host='localhost', password='chumash1000')
 query = ""
@@ -26,9 +26,9 @@ if process_name2 and enzyme_name2:
 
 
 cursor.execute(query)
-#data = cursor.fetchall()
+cnx.commit()
 
-# html with the response from the insert                                        
+# html with the response from the delete 
 print("Content-type:text/html\r\n\r\n")
 print("<html>")
 print(" <style>")
@@ -44,7 +44,7 @@ print("<center>")
 print("<h1>~BioBase~</h1>")
 print("<h2>Home of Biochemical Processes</h2>")
 print("<h3>Deleted!</h3>")
-print(query)
+#print(query)
 #print("<h3>with "  + " error<h3>")                                            
 print("</center>")
 print("</body>")

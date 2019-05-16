@@ -14,18 +14,18 @@
     <form action = "cgi-bin/project.py" method = "get">
       Find all processes that use this enzyme: <br>
       <select name = "search_enzyme">
-	<?php
+	<!--<?php
 	  $sql = mysqli_query($connection, "select enzyme_name from enzyme");
 	  while ($row = $sql->fetch_assoc()){
 	echo "<option value=\"search_enzyme1\">" . $row['enzyme_name'] . "</option>";
-	} ?>
+	} ?> -->
 	 
-	<!-- <option value = ""> </option>
+	<option value = ""> </option>
         <option value = "process">Process</option>
         <option value ="enzyme">Enzyme</option>
         <option value = "location">Location</option>
         <option value = "intermediate">Intermediate</option>
-        <option value = "condition">Condition</option> -->
+        <option value = "condition">Condition</option>
 	
       </select>
       <br><br>

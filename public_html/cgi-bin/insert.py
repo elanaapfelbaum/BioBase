@@ -1,4 +1,4 @@
-#!/usr/bin/python3                                     
+xsxc#!/usr/bin/python3                                     
                                 
 import cgi
 import mysql.connector
@@ -20,10 +20,10 @@ cursor = cnx.cursor()
 # inserting into a table
 # need to also check if not the right form... right amount of attributes for that table
 if insert_table and values:
-    query = ("insert into " + insert_table + " values (" + svalues + ");")
+    query = "insert into " + insert_table + " values (" + svalues + ");"
 
 cursor.execute(query)
-
+cnx.commit()
 
 # html with the response from the insert
 print("Content-type:text/html\r\n\r\n")
@@ -41,8 +41,7 @@ print("<center>")
 print("<h1>~BioBase~</h1>")
 print("<h2>Home of Biochemical Processes</h2>")
 print("<h3>Inserted " + svalues + " into " + insert_table + "!</h3>")
-print(query)
-#print("<h3>with "  + " error<h3>")
+#print(query)
 print("</center>")
 print("</body>")
 print("</html>")
