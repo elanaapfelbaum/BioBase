@@ -1,4 +1,4 @@
-xsxc#!/usr/bin/python3                                     
+#!/usr/bin/python3                                     
                                 
 import cgi
 import mysql.connector
@@ -20,7 +20,7 @@ cursor = cnx.cursor()
 # inserting into a table
 # need to also check if not the right form... right amount of attributes for that table
 if insert_table and values:
-    query = "insert into " + insert_table + " values (" + svalues + ");"
+    query = "insert into " + insert_table + " values (" + svalues + ")"
 
 cursor.execute(query)
 cnx.commit()
