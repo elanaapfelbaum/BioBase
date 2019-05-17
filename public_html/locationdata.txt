@@ -5,3 +5,4 @@ mitochondira | outer membrane
 mitochondria | matrix
 chloroplast | stroma
 chloroplast | thylakoin membrane
+lysosome | NULL

@@ -19,7 +19,7 @@ create table process(
        primary key(process_name),
        foreign key(goal_product) references intermediate(intermediate_name) on delete cascade);
 
-create table condition(
+create table conds(
        concentration	varchar(50),
        compound	        varchar(100),
        prime_location	varchar(100),
@@ -33,8 +33,8 @@ create table operates_under(
        compound		varchar(100),
        primary key(process_name, concentration, compound),
        foreign key(process_name) references process(process_name) on delete cascade,
-       foreign key(concentration) references condition(concentration) on delete cascade,
-       foreign key(compound) references condition(compound) on delete cascade); 
+       foreign key(concentration) references conds(concentration) on delete cascade,
+       foreign key(compound) references conds(compound) on delete cascade); 
        
 create table uses(
        process_name varchar(100),
@@ -67,9 +67,9 @@ load data local infile 'enzymedata.txt' into table enzyme fields terminated by '
 load data local infile 'processdata.txt' into table process fields terminated by ' | ' lines terminated by '\n';
 load data local infile 'intermediatedata.txt' into table intermediate fields terminated by ' | ' lines terminated by '\n';
 load data local infile 'locationdata.txt' into table location fields terminated by ' | ' lines terminated by '\n';
-load data local infile 'conditiondata.txt' into table condition fields terminated by ' | ' lines terminated by '\n';
+load data local infile 'conditiondata.txt' into table conds fields terminated by ' | ' lines terminated by '\n';
 
-
+load data local infile 'convertsdata.txt' into table converts fields terminated by ' | ' lines terminated by '\n';
 load data local infile 'located_indata.txt' into table located_in fields terminated by ' | ' lines terminated by '\n';
 load data local infile 'convertsdata.txt' into table converts fields terminated by ' | ' lines terminated by '\n';
 load data local infile 'usesdata.txt' into table uses fields terminated by ' | ' lines terminated by '\n';
