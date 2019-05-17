@@ -10,4 +10,4 @@ Through an html interface, the user (whether it is a researcher or a student) wo
 This would give capabilities such as the ability to search through the information, add findings, refine a previous finding, 
 or delete a theory that was disproved with new research.
 
-Check it out: http://ada.sterncs.net/~eapfelbaum/project.html
+Check it out: http://ada.sterncs.net/~eapfelbaum/biobase.html
