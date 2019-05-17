@@ -12,18 +12,19 @@
     <h2><i>Home of Biochemical Processes</i></h2>
     <h3>Update the Database!</h3>
     <h4>Choose from the options below!</h4>
-    <form action = "cgi-bin/project.py" method = "get">
-      <b> Change product for an enzyme mechanism</b><br>
+    <form action = "cgi-bin/update.py" method = "get">
+      <b> Update a product for an enzyme mechanism</b><br>
+      <b> to an existing intermediate!</b><br>
       Enzyme:<input type = "text" name = "enzyme_name">
       Product:<input type = "text" name = "product_name">
       <br><br>
       
-      <b> Change enzyme mechanism</b><br>
+      <b> Update an enzyme's ligand mechanism</b><br>
       Enzyme:<input type = "text" name = "enzyme_name2">
       Mechanism:<input type = "text" name = "mechanism_name">
       <br><br>
 
-      <b>Change process condition</b><br>
+      <b>Update the condition under which a process occurs</b><br>
       Process:<input type = "text" name = "process_name">
       Concentration:<input type = "text" name = "concentration">
       Compound:<input type = "text" name = "compound_name">
