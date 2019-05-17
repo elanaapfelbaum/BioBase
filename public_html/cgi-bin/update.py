@@ -22,10 +22,9 @@ if enzyme_name and product_name:
 if enzyme_name2 and mechanism_name:
     query = "update enzyme set ligand_mechanism = '" + mechanism_name.strip() + "' where enzyme_name = '" + enzyme_name2.strip() + "'"
 
-if process_name and concentration and compound:
+if process_name and concentration and compound_name:
     query = "update operates_under set concentration = '" + concentration.strip() + "', compound = '" + compound_name.strip() + "' where process_name = '" + process_name.strip() + "'"
-
-
+    
 cursor.execute(query)
 cnx.commit()
 
