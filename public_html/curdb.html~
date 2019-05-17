@@ -1,0 +1,33 @@
+<style>
+    body {
+    background-image: url('biochem.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    }>
+</style>
+<body>
+  <center>
+    <h1><strong>~BioBase~</strong></h1>
+    <h2><i>Home of Biochemical Processes</i></h2>
+    <h3>Check What is Currently in the Database!</h3>
+    <!--<form action = "cgi-bin/insert.py" method = "get">
+      Insert values (comma delimited): <input type = "text" name = "values">
+      into:
+      <select name="insert_table">
+        <option value = ""> </option>
+        <option value = "process">Process</option>
+        <option value ="enzyme">Enzyme</option>
+        <option value = "location">Location</option>
+        <option value = "intermediate">Intermediate</option>
+        <option value = "condition">Condition</option>
+      </select>
+      <br><br>
+
+      <input type="submit" value = "Submit"/>
+    </form> -->
+
+
+    <!-- code to print out all the selects from the databases -->
+  </center>
+</body>
