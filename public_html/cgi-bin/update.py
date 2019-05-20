@@ -2,7 +2,6 @@
 
 import cgi
 import mysql.connector
-import MySQLdb
 
 form = cgi.FieldStorage()
 enzyme_name    = form.getvalue('enzyme_name')
@@ -29,71 +28,59 @@ if process_name and concentration and compound_name:
     query = "update operates_under set concentration = '" + concentration.strip() + "', compound = '" + compound_name.strip() + "' where process_name = '" + process_name.strip() + "'"
     query2 = "select * from operates_under where process_name = '" + process_name.strip() + "'"
 
+hasError = False
 try:
-    try:
-        curs.execute(query)
-        
-    except (MySQLdb.Error, MySQLdb.Warning) as e:
-        print("Content-type:text/html\r\n\r\n")
-        print("<html>")
-        print(" <style>")
-        print("body {")
-        print("background-image: url(../biochem.png);")
-        print("background-attachment: fixed;")
-        print("background-size: cover;")
-        print("background-position: center;")
-        print("}>")
-        print("</style>")
-        print("<body>")
-        print("<center>")
-        print("<h1>~BioBase~</h1>")
-        print("<h2>Home of Biochemical Processes</h2>")
-        print("<h3>Encountered a Problem!! :/</h3>")
-        print(e)
-        print("<br><br>")
-        print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/update.html">Try Again!</a></b>')
-        print("</center>")
-        print("</body>")
-        print("</html>")
+    cursor.execute(query)
+    cnx.commit()
 
-        return None
-
-    row = curs.fetchone()
-    if row:
-        return row[0]
-    return None
-
-#finally:
- #   conn.close()
+except mysql.connector.Error as err:
+    print("Content-type:text/html\r\n\r\n")
+    print("<html>")
+    print(" <style>")
+    print("body {")
+    print("background-image: url(../biochem.png);")
+    print("background-attachment: fixed;")
+    print("background-size: cover;")
+    print("background-position: center;")
+    print("}>")
+    print("</style>")
+    print("<body>")
+    print("<center>")
+    print("<h1>~BioBase~</h1>")
+    print("<h2>Home of Biochemical Processes</h2>")
+    print("Something went wrong: {}".format(err) + "<br><br>")
+    print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/update.html">Back</a></b>')
+    print("</center>")
+    print("</body>")
+    print("</html>")
+    hasError = True
     
-#cursor.execute(query)
-cnx.commit()
-
-cursor.execute(query2)
-data = cursor.fetchall()
-
-# html with the response from the update           
-print("Content-type:text/html\r\n\r\n")
-print("<html>")
-print(" <style>")                                                  
-print("body {")                                   
-print("background-image: url(../biochem.png);")                        
-print("background-attachment: fixed;")                                 
-print("background-size: cover;")                                            
-print("background-position: center;")                          
-print("}>")                                                                        
-print("</style>")                   
-print("<body>")
-print("<center>")
-print("<h1>~BioBase~</h1>")
-print("<h2>Home of Biochemical Processes</h2>")
-print("<h3>Updated!</h3>")
-print("The database now reads", data)
-print("<br><br>")
-print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Try Something Else!</a></b>')
-print("</center>")
-print("</body>")
-print("</html>")
+if hasError == False:
+    cursor.execute(query2)
+    data = cursor.fetchall()
+    
+    # html with the response from the update           
+    print("Content-type:text/html\r\n\r\n")
+    print("<html>")
+    print(" <style>")                                                  
+    print("body {")                                   
+    print("background-image: url(../biochem.png);")                        
+    print("background-attachment: fixed;")                                 
+    print("background-size: cover;")                                            
+    print("background-position: center;")                          
+    print("}>")                                                                        
+    print("</style>")                   
+    print("<body>")
+    print("<center>")
+    print("<h1>~BioBase~</h1>")
+    print("<h2>Home of Biochemical Processes</h2>")
+    print("<h3>Updated!</h3>")
+    print("The database now reads", data)
+    print("<br><br>")
+    print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Try Something Else!</a></b>')
+    print("</center>")
+    print("</body>")
+    print("</html>")
 
 cursor.close()
 cnx.close()
