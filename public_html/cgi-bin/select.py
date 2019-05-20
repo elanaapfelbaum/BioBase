@@ -72,7 +72,8 @@ if hasError == False:
         for result in response:
             print("<b>" + result[0] + "</b><br>")
     print("<br>")
-    print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Try Something Else!</a></b>')
+    print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Try Something Else!</a></b><br><br>')
+    print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/select.html">Back</a></b><br><br>')
     print("</center>")
     print("</body>")
     print("</html>")
