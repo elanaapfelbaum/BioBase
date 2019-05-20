@@ -13,43 +13,67 @@
     <h3>Search the Database</h3>
     <form action = "cgi-bin/select.py" method = "get">
       Find all processes that use this enzyme: <br>
-      <select name = "search_enzyme">
+      <input type = "text" name = "search_enzyme">
+      <!--<select name = "search_enzyme">
 	<!--<?php
 	  $sql = mysqli_query($connection, "select enzyme_name from enzyme");
 	  while ($row = $sql->fetch_assoc()){
 	echo "<option value=\"search_enzyme1\">" . $row['enzyme_name'] . "</option>";
 	} ?> -->
-	 
-	<option value = ""> </option>
-        <option value = "process">Process</option>
+	<!-- <% import cgi, mysql.connector
+	   cnx = mysql.connector.connect( user="eapfelba", database="eapfelba1", host="localhost", password="chumash1000")
+	   cursor = cnx.cursor()
+	   query = ("select enzyme_name from enzyme")
+	   cursor.execute(query)
+
+	   for (enzyme_name) in cursor: print("<option>" + enzyme_name + "</option>")
+	   %> 
+
+	
+	
+	<option value = "0"> </option>
+	<?php
+	  mysql_connect("localhost","eapfelba","chumash1000");
+	  mysql_select_db("eapfelba2");
+
+	  $sql=mysql_query("SELECT enzyme_name FROM enzyme");
+	  if(mysql_num_rows($sql)){
+	  $select= '<select name="select">';
+	  while($rs=mysql_fetch_array($sql)){
+	  $select.='<option value="'.$rs['enzyme_name'].'">'.$rs['enzyme_name'].'</option>';}
+	  }
+	  
+	<!-- <option value = "process">Process</option>
         <option value ="enzyme">Enzyme</option>
         <option value = "location">Location</option>
         <option value = "intermediate">Intermediate</option>
         <option value = "condition">Condition</option>
 	
-      </select>
+      </select> -->
       <br><br>
       <b>OR</b><br><br>
       Find all the enzymes used in this process: <br>
-      <select name = "search_process1">
+      <input type="text" name="search_process1">
+      <!--<select name = "search_process1">
         <option value = ""> </option>
         <option value = "process">Process</option>
         <option value ="enzyme">Enzyme</option>
         <option value = "location">Location</option>
         <option value = "intermediate">Intermediate</option>
         <option value = "condition">Condition</option>
-      </select>
+      </select> -->
       <br><br>
       <b>OR</b><br><br>
       Find all the locations in which this process occurs: <br>
-      <select name = "search_process2">
+      <input type="text" name="search_process2">
+      <!--<select name = "search_process2">
         <option value = ""> </option>
         <option value = "process">Process</option>
         <option value ="enzyme">Enzyme</option>
         <option value = "location">Location</option>
         <option value = "intermediate">Intermediate</option>
         <option value = "condition">Condition</option>
-      </select>
+      </select> -->
       <br><br>
       <input type="submit" value = "Submit"/>
     </form>

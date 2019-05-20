@@ -10,24 +10,11 @@
   <center>
     <h1><strong>~BioBase~</strong></h1>
     <h2><i>Home of Biochemical Processes</i></h2>
-    <h3>Check What is Currently in the Database!</h3>
-    <!--<form action = "cgi-bin/insert.py" method = "get">
-      Insert values (comma delimited): <input type = "text" name = "values">
-      into:
-      <select name="insert_table">
-        <option value = ""> </option>
-        <option value = "process">Process</option>
-        <option value ="enzyme">Enzyme</option>
-        <option value = "location">Location</option>
-        <option value = "intermediate">Intermediate</option>
-        <option value = "condition">Condition</option>
-      </select>
-      <br><br>
-
-      <input type="submit" value = "Submit"/>
-    </form> -->
-
-
-    <!-- code to print out all the selects from the databases -->
+    <h3>The Current Database!</h3>
+    <input type="button" name="enzyme" value = "enzyme" action="cgi-bin/enzyme.py"/> <br><br>
+    <input type="submit" value = "Process"/> <br><br>
+    <input type="submit" value = "Location"/> <br><br>
+    <input type="submit" value = "Condition"/> <br><br>
+    <input type="submit" value = "Intermediate"/> <br><br>
   </center>
 </body>

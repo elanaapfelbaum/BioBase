@@ -12,7 +12,7 @@
     <h2><i>Home of Biochemical Processes</i></h2>
     <h3>Add Something New!</h3>
     <form action = "cgi-bin/insert.py" method = "get">
-      Insert values (comma delimited): <input type = "text" name = "values">
+      Insert values: <input type = "text" name = "values">
       into:
       <select name="insert_table">
 	<option value = ""> </option>
@@ -23,8 +23,13 @@
         <option value = "condition">Condition</option> 
       </select>
       <br><br>
-
-      <input type="submit" value = "Submit"/>
+      <input type="submit" value = "Submit"/> <br><br>
+      <b>Format to Insert: </b><br>
+      <b>Enzyme</b> - enzyme name, mechanism <br>
+      <b>Process</b> - process name, goal product<br>
+      <b>Location</b> - organelle, substructure<br>
+      <b>Intermediate</b> - name, concentration (high/low)<br>
+      <b>Condition</b> - concentration, compound, organelle<br>
     </form>
   </center>
 </body>

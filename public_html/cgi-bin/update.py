@@ -32,20 +32,40 @@ if process_name and concentration and compound_name:
 try:
     try:
         curs.execute(query)
-        # NB : you won't get an IntegrityError when reading
+        
     except (MySQLdb.Error, MySQLdb.Warning) as e:
+        print("Content-type:text/html\r\n\r\n")
+        print("<html>")
+        print(" <style>")
+        print("body {")
+        print("background-image: url(../biochem.png);")
+        print("background-attachment: fixed;")
+        print("background-size: cover;")
+        print("background-position: center;")
+        print("}>")
+        print("</style>")
+        print("<body>")
+        print("<center>")
+        print("<h1>~BioBase~</h1>")
+        print("<h2>Home of Biochemical Processes</h2>")
+        print("<h3>Encountered a Problem!! :/</h3>")
         print(e)
+        print("<br><br>")
+        print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/update.html">Try Again!</a></b>')
+        print("</center>")
+        print("</body>")
+        print("</html>")
+
         return None
 
-    try: 
-        user = curs.fetchone()[0]
-        return user
-    except TypeError as e:
-        print(e)
-        return None
+    row = curs.fetchone()
+    if row:
+        return row[0]
+    return None
 
-finally:
-    conn.close()
+#finally:
+ #   conn.close()
+    
 #cursor.execute(query)
 cnx.commit()
 

@@ -1,7 +1,7 @@
 cytoplasm | NULL
-mitrochondria | inner membrane
+mitochondria | inner membrane
 mitochondria | intermembrane space
-mitochondira | outer membrane
+mitochondria | outer membrane
 mitochondria | matrix
 chloroplast | stroma
 chloroplast | thylakoin membrane
