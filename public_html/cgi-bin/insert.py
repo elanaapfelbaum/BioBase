@@ -2,10 +2,11 @@
                                 
 import cgi
 import mysql.connector
+from html import beghtml, endhtml
 
 form = cgi.FieldStorage()
 insert_table = form.getvalue('insert_table')
-values = form.getvalue('values').split(',')
+values       = form.getvalue('values').split(',')
 
 svalues = ""
 for value in values:
@@ -22,54 +23,31 @@ cursor = cnx.cursor()
 if insert_table and values:
     query = "insert into " + insert_table + " values (" + svalues + ")"
 
-hasError = False
-try:
-    cursor.execute(query)
-    cnx.commit()   
-except mysql.connector.Error as err:
-    print("Content-type:text/html\r\n\r\n")
-    print("<html>")
-    print(" <style>")
-    print("body {")
-    print("background-image: url(../biochem.png);")
-    print("background-attachment: fixed;")
-    print("background-size: cover;")
-    print("background-position: center;")
-    print("}>")
-    print("</style>")
-    print("<body>")
-    print("<center>")
-    print("<h1>~BioBase~</h1>")
-    print("<h2>Home of Biochemical Processes</h2>")
-    print("Something went wrong: {}".format(err) + "<br><br>")
+if not query:
+    beghtml()
+    print("<h3>You didn't fill anything out! :/</h3>")
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/insert.html">Back</a></b>')
-    print("</center>")
-    print("</body>")
-    print("</html>")
-    hasError = True
+    endhtml()
+    
+hasError = False
+if query:
+    try:
+        cursor.execute(query)
+        cnx.commit()   
+    except mysql.connector.Error as err:
+        beghtml()
+        print("Something went wrong: {}".format(err) + "<br><br>")
+        print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/insert.html">Back</a></b>')
+        endhtml()
+        hasError = True
     
 if hasError == False:
     # html with the response from the insert
-    print("Content-type:text/html\r\n\r\n")
-    print("<html>")
-    print(" <style>")
-    print("body {")
-    print("background-image: url(../biochem.png);")
-    print("background-attachment: fixed;")
-    print("background-size: cover;")
-    print("background-position: center;")
-    print("}>")
-    print("</style>")
-    print("<body>")
-    print("<center>")
-    print("<h1>~BioBase~</h1>")
-    print("<h2>Home of Biochemical Processes</h2>")
+    beghtml()
     print("<h3>Inserted " + svalues + " into " + insert_table + "!</h3>")
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Try Something Else!</a></b><br><br>')
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/insert.html">Back</a></b>')
-    print("</center>")
-    print("</body>")
-    print("</html>")
-
+    endhtml()
+    
 cursor.close()
 cnx.close()

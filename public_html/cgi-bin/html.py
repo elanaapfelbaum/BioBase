@@ -1,0 +1,20 @@
+def beghtml():
+    print("Content-type:text/html\r\n\r\n")
+    print("<html>")
+    print(" <style>")
+    print("body {")
+    print("background-image: url(../biochem.png);")
+    print("background-attachment: fixed;")
+    print("background-size: cover;")
+    print("background-position: center;")
+    print("}>")
+    print("</style>")
+    print("<body>")
+    print("<center>")
+    print("<h1>~BioBase~</h1>")
+    print("<h2>Home of Biochemical Processes</h2>")
+
+def endhtml():
+    print("</center>")
+    print("</body>")
+    print("</html>")

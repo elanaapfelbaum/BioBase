@@ -2,6 +2,7 @@
 
 import cgi
 import mysql.connector
+from html import beghtml, endhtml
 
 form = cgi.FieldStorage()
 enzyme_name    = form.getvalue('enzyme_name')
@@ -34,25 +35,10 @@ try:
     cnx.commit()
 
 except mysql.connector.Error as err:
-    print("Content-type:text/html\r\n\r\n")
-    print("<html>")
-    print(" <style>")
-    print("body {")
-    print("background-image: url(../biochem.png);")
-    print("background-attachment: fixed;")
-    print("background-size: cover;")
-    print("background-position: center;")
-    print("}>")
-    print("</style>")
-    print("<body>")
-    print("<center>")
-    print("<h1>~BioBase~</h1>")
-    print("<h2>Home of Biochemical Processes</h2>")
+    beghtml()
     print("Something went wrong: {}".format(err) + "<br><br>")
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/update.html">Back</a></b>')
-    print("</center>")
-    print("</body>")
-    print("</html>")
+    endhtml()
     hasError = True
     
 if hasError == False:
@@ -60,28 +46,14 @@ if hasError == False:
     data = cursor.fetchall()
     
     # html with the response from the update           
-    print("Content-type:text/html\r\n\r\n")
-    print("<html>")
-    print(" <style>")                                                  
-    print("body {")                                   
-    print("background-image: url(../biochem.png);")                        
-    print("background-attachment: fixed;")                                 
-    print("background-size: cover;")                                            
-    print("background-position: center;")                          
-    print("}>")                                                                        
-    print("</style>")                   
-    print("<body>")
-    print("<center>")
-    print("<h1>~BioBase~</h1>")
-    print("<h2>Home of Biochemical Processes</h2>")
+    beghtml()
     print("<h3>Updated!</h3>")
     print("The database now reads", data)
     print("<br><br>")
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Try Something Else!</a></b><br><br>')
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/update.html">Back</a></b>')
-    print("</center>")
-    print("</body>")
-    print("</html>")
+    endhtml()
+
 
 cursor.close()
 cnx.close()
