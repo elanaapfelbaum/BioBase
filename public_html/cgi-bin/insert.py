@@ -7,7 +7,9 @@ from html import beghtml, endhtml
 form = cgi.FieldStorage()
 insert_table = form.getvalue('insert_table')
 values       = form.getvalue('values')
-if values:
+
+
+if values:   # make sure not empty to split
     values = values.split(',')
 
 svalues = ""

@@ -12,7 +12,22 @@ mechanism_name = form.getvalue('mechanism_name')
 process_name   = form.getvalue('process_name')
 concentration  = form.getvalue('concentration')
 compound_name  = form.getvalue('compound_name')
-
+process_name2  = form.getvalue('process_name2')
+goal           = form.getvalue('goal')
+inter          = form.getvalue('inter')
+conc           = form.getvalue('conc')
+process_name3  = form.getvalue('process_name3')
+enzyme_name3   = form.getvalue('enzyme_name3')
+enzyme_name4   = form.getvalue('enzyme_name4')
+organelle      = form.getvalue('organelle')
+sub            = form.getvalue('sub')
+organelle2     = form.getvalue('organelle2')
+sub2           = form.getvalue('sub2')
+conc2          = form.getvalue('conc2')
+comp           = form.getvalue('comp')
+loc            = form.getvalue('loc')
+sub3           = form.getvalue('sub3')
+sub4           = form.getvalue('sub4')
 
 cnx = mysql.connector.connect(user='eapfelba', database='eapfelba2', host='localhost', password='chumash1000')
 cursor = cnx.cursor(buffered=True)
@@ -32,12 +47,29 @@ if process_name and concentration and compound_name:
     query = "update operates_under set concentration = '" + concentration.strip() + "', compound = '" + compound_name.strip() + "' where process_name = '" + process_name.strip() + "'"
     query2 = "select * from operates_under where process_name = '" + process_name.strip() + "'"
 
-# process
-# intermediate
-# uses
-# located_in
-# operates_under
-# conds
+if process_name2 and goal:
+    query = "update process set goal_product = '" + goal + "' where process_name = '" + process_name2 + "'"
+    query2 = "select * from process where process_name = '" + process_name2 + "'"
+
+if inter and conc:
+    query = "update intermediate set concenration = '" + conc + "' where intermediate_name = '" + inter + "'"
+    query2 = "select * from intermediate where intermediate_name = '" + inter + "'"
+
+if process_name3 and enzyme_name3:
+    query = "update uses set enzyme_name = '" + enzyme_name3 + "' where process_name = '" + process_name3 + "'"
+    query2 = "select * from uses where process_name = '" + process_name3 + "' and enzyme_name = '" + enzyme_name3 + "'"
+
+if enzyme_name4 and organelle and sub and sub4:
+    query = "update located_in set organelle = '" + organelle + "' and substructure = '" + sub + "' where enzyme_name = '" + enzyme_name4 + "' and substructure = '" + sub4 + "'"
+    query2 = "select * from located_in where enzyme_name = '" + enzyme_name4 + "'"
+    
+if organelle2 and sub2:
+    query = "update location set substructure = '" + sub2 + "' where organelle = '" + organelle2 + "' and substructure = '" + sub3 + "'"
+    query2 = "select * from location where organelle = '" + organelle2 + "' and substructure = '" + sub2 + "'"
+
+if conc2 and comp and loc:
+    query = "update conds set prime_location = '" + loc + "' where concentration = '" + conc2 + "' and compound = '" + comp + "'"
+    query2 = "select * from conds where concentration = '" + conc2 +"' and compound = '" + comp + "' and prime_location = '" + loc + "'"
 
 
 hasError = False
