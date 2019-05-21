@@ -55,6 +55,13 @@ if process_name3 and conc2 and compound2:
 
 
 hasError = False
+if not query:
+    beghtml()
+    print("<h3>You didn't fill anything out! :/</h3>")
+    print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/delete.html">Back</a></b>')
+    endhtml()
+    hasError = True
+    
 try:
     cursor.execute(query)
     cnx.commit()

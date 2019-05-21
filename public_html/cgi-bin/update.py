@@ -16,6 +16,9 @@ compound_name  = form.getvalue('compound_name')
 
 cnx = mysql.connector.connect(user='eapfelba', database='eapfelba2', host='localhost', password='chumash1000')
 cursor = cnx.cursor(buffered=True)
+query = ""
+query2 = ""
+
 
 if enzyme_name and product_name:
     query = "update converts set product_name = '" + product_name.strip() + "' where enzyme_name = '" + enzyme_name.strip() + "'"
@@ -29,18 +32,34 @@ if process_name and concentration and compound_name:
     query = "update operates_under set concentration = '" + concentration.strip() + "', compound = '" + compound_name.strip() + "' where process_name = '" + process_name.strip() + "'"
     query2 = "select * from operates_under where process_name = '" + process_name.strip() + "'"
 
-hasError = False
-try:
-    cursor.execute(query)
-    cnx.commit()
+# process
+# intermediate
+# uses
+# located_in
+# operates_under
+# conds
 
-except mysql.connector.Error as err:
+
+hasError = False
+if not query:
     beghtml()
-    print("Something went wrong: {}".format(err) + "<br><br>")
+    print("<h3>You didn't fill anything out! :/</h3>")
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/update.html">Back</a></b>')
     endhtml()
     hasError = True
+
+if query:
+    try:
+        cursor.execute(query)
+        cnx.commit()
     
+    except mysql.connector.Error as err:
+        beghtml()
+        print("Something went wrong: {}".format(err) + "<br><br>")
+        print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/update.html">Back</a></b>')
+        endhtml()
+        hasError = True
+
 if hasError == False:
     cursor.execute(query2)
     data = cursor.fetchall()

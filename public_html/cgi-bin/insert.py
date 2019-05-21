@@ -6,13 +6,16 @@ from html import beghtml, endhtml
 
 form = cgi.FieldStorage()
 insert_table = form.getvalue('insert_table')
-values       = form.getvalue('values').split(',')
+values       = form.getvalue('values')
+if values:
+    values = values.split(',')
 
 svalues = ""
-for value in values:
-    # concatenate them into the appropriate syntax, removing any unnecessary whitespace
-    svalues += "'" + value.strip() + "', "
-svalues = svalues[:-2]
+if values:
+    for value in values:
+        # concatenate them into the appropriate syntax, removing any unnecessary whitespace
+        svalues += "'" + value.strip() + "', "
+    svalues = svalues[:-2]
 
 cnx = mysql.connector.connect(user='eapfelba', host = 'localhost', database='eapfelba2', password='chumash1000')
 query=""
@@ -23,13 +26,14 @@ cursor = cnx.cursor()
 if insert_table and values:
     query = "insert into " + insert_table + " values (" + svalues + ")"
 
+hasError = False
 if not query:
     beghtml()
     print("<h3>You didn't fill anything out! :/</h3>")
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/insert.html">Back</a></b>')
     endhtml()
+    hasError = True
     
-hasError = False
 if query:
     try:
         cursor.execute(query)
