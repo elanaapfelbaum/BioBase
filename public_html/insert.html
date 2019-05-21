@@ -15,12 +15,17 @@
       Insert values: <input type = "text" name = "values">
       into:
       <select name="insert_table">
-	<option value = ""> </option>
-        <option value = "process">Process</option>
-        <option value ="enzyme">Enzyme</option>
-        <option value = "location">Location</option>
-        <option value = "intermediate">Intermediate</option>
-        <option value = "condition">Condition</option> 
+	<option value=""> </option>
+        <option value="process">Process</option>
+        <option value="enzyme">Enzyme</option>
+        <option value="location">Location</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="conds">Condition</option> 
+	<option value="converts">Converts</option>
+	<option value="located_in">Located In</option>
+	<option value="operates_under">Operates Under</option>
+	<option value="uses">Uses</option>
+
       </select>
       <br><br>
       <input type="submit" value = "Submit"/> <br><br>
@@ -30,6 +35,11 @@
       <b>Location</b> - organelle, substructure<br>
       <b>Intermediate</b> - name, concentration (high/low)<br>
       <b>Condition</b> - concentration, compound, organelle<br>
+      <b>Uses</b> - process name, enzyme name<br>
+      <b>Converts</b> - enzyme name, reactant name, product name, energy compounds, delta G<br>
+      <b>Located In</b> - enzyme name, organelle, substructure<br>
+      <b>Operates Under</b> - process name, concentration, compound <br>
+      
     </form>
   </center>
 </body>
