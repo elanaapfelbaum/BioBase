@@ -27,31 +27,31 @@ query = ""
 cursor = cnx.cursor()
 
 if enzyme_name:
-    query = "delete from converts where enzyme_name = '" + enzyme_name.strip() + "'"
+    query = "delete from converts where enzyme_name = '%s'" % enzyme_name
 
 if enzyme_name3:
-    query = "delete from enzyme where enzyme_name = '" + enzyme_name3.strip() + "'"
+    query = "delete from enzyme where enzyme_name = '%s'" % enzyme_name3
     
 if process_name:
-    query = "delete from process where process_name = '" + process_name.strip() + "'"
+    query = "delete from process where process_name = '%s'" % process_name
 
 if process_name2 and enzyme_name2:
-    query = "delete from uses where process_name = '" + process_name2.strip() + "' and enzyme_name = '" + enzyme_name2.strip() + "'"
+    query = "delete from uses where process_name = '%s' and enzyme_name = '%s'" % (process_name2, enzyme_name2)
 
 if conc and compound:
-    query = "delete from conds where concentration = '" + conc + "' and compound = '" + compound + "'"
+    query = "delete from conds where concentration = '%s' and compound = '%s'" % (conc, compound)
 
 if intermediate:
-    query = "delete from intermediate where intermediate_name = '" + intermediate + "'"
+    query = "delete from intermediate where intermediate_name = '%s'" % intermediate
 
 if organelle and sub:
-    query = "delete from location where organelle = '" + organelle + "' and substructure = '" + sub + "'"
+    query = "delete from location where organelle = '%s' and substructure = '%s'" % (organelle, sub)
 
 if enzyme_name3 and organelle2:
-    query = "delete from located_in where enzyme_name = '" + enzyme_name3 + "' and organelle = '" + organelle2 + "'"
+    query = "delete from located_in where enzyme_name = '%s' and organelle = '%s'" % (enzyme_name3, organelle2)
 
 if process_name3 and conc2 and compound2:
-    query = "delete from operates_uner where process_name = '" + process_name3 + "' and concentration = '" + conc2 + "' and compound = '" + compound2 + "'"
+    query = "delete from operates_uner where process_name = '%s' and concentration = '%s' and compound = '%s'" % (process_name3, conc2, compound2)
 
 
 hasError = False

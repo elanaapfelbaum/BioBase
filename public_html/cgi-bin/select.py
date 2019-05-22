@@ -24,37 +24,37 @@ query = ""
 
 # different options to select
 if search_enzyme:
-    query = "select process_name from uses where enzyme_name = '" + search_enzyme + "'" 
+    query = "select process_name from uses where enzyme_name = '%s'"  % search_enzyme
 
 if search_process1:
-    query = "select enzyme_name from uses where process_name = '" + search_process1 + "'"
+    query = "select enzyme_name from uses where process_name = '%s'" % search_process1
 
 if search_process2:
-    query = "select distinct organelle from uses, located_in where process_name = '" + search_process2 + "'"
+    query = "select distinct organelle from uses, located_in where process_name = '%s'" % search_process2
 
 if search_enzyme2:
-    query = "select ligand_mechanism from enzyme where enzyme_name = '" + search_enzyme2 + "'"
+    query = "select ligand_mechanism from enzyme where enzyme_name = '%s'" % search_enzyme2
 
 if search_process3:
-    query = "select goal_product from process where process_name = '" + search_process3 + "'"
+    query = "select goal_product from process where process_name = '%s'" % search_process3
 
 if sub:
-    query = "select organelle from location where substructure = '" + sub + "'"
+    query = "select organelle from location where substructure = '%s'" % sub
 
 if inter:
-    query = "select concentration from conds where compound = '" + inter + "'"
+    query = "select concentration from conds where compound = '%s'" % inter
 
 if search_process5:
-    query = "select concentration, compound from operates_under where process_name = '" + search_process5 + "'"
+    query = "select concentration, compound from operates_under where process_name = '%s'" % search_process5
 
 if search_enzyme3 and reac:
-    query = "select product_name from converts where enzyme_name = '" + search_enzyme3 + "' and reactant_name = '" + reac + "'"
+    query = "select product_name from converts where enzyme_name = '%s' and reactant_name = '%s'" % (search_enzyme3, reac)
 
 if search_enzyme4:
-    query = "select organelle from located_in where enzyme_name = '" + search_enzyme4 + "'"
+    query = "select organelle from located_in where enzyme_name = '%s'" % search_enzyme4
     
 if inter2:
-    query = "select concenration from intermediate where intermediate_name = '" + inter2 + "'"
+    query = "select concenration from intermediate where intermediate_name = '%s'" % inter2
 
 
     

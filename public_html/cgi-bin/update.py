@@ -36,40 +36,40 @@ query2 = ""
 
 
 if enzyme_name and product_name:
-    query = "update converts set product_name = '" + product_name.strip() + "' where enzyme_name = '" + enzyme_name.strip() + "'"
-    query2 = "select * from converts where product_name = '" + product_name.strip() + "' and enzyme_name = '" + enzyme_name.strip() + "'"
+    query = "update converts set product_name = '%s' where enzyme_name = '%s'" % (product_name, enzyme_name)
+    query2 = "select * from converts where product_name = '%s' and enzyme_name = '%s'" % (product_name, enzyme_name)
     
 if enzyme_name2 and mechanism_name:
-    query = "update enzyme set ligand_mechanism = '" + mechanism_name.strip() + "' where enzyme_name = '" + enzyme_name2.strip() + "'"
-    query2 = "select * from enzyme where enzyme_name = '" + enzyme_name2.strip() + "'"
+    query = "update enzyme set ligand_mechanism = '%s' where enzyme_name = '%s'" % (mechanism_name, enzyme_name2)
+    query2 = "select * from enzyme where enzyme_name = '%s'" % enzyme_name2
     
 if process_name and concentration and compound_name:
-    query = "update operates_under set concentration = '" + concentration.strip() + "', compound = '" + compound_name.strip() + "' where process_name = '" + process_name.strip() + "'"
-    query2 = "select * from operates_under where process_name = '" + process_name.strip() + "'"
+    query = "update operates_under set concentration = '%s', compound = '%s' where process_name = '%s'" % (concentration, compound, process_name)
+    query2 = "select * from operates_under where process_name = '%s'" % process_name
 
 if process_name2 and goal:
-    query = "update process set goal_product = '" + goal + "' where process_name = '" + process_name2 + "'"
-    query2 = "select * from process where process_name = '" + process_name2 + "'"
+    query = "update process set goal_product = '%s' where process_name = '%s'" % (goal, process_name2)
+    query2 = "select * from process where process_name = '%s'" % process_name2
 
 if inter and conc:
-    query = "update intermediate set concenration = '" + conc + "' where intermediate_name = '" + inter + "'"
-    query2 = "select * from intermediate where intermediate_name = '" + inter + "'"
+    query = "update intermediate set concenration = '%s' where intermediate_name = '%s'" % (conc, inter)
+    query2 = "select * from intermediate where intermediate_name = '%s'" % inter
 
 if process_name3 and enzyme_name3:
-    query = "update uses set enzyme_name = '" + enzyme_name3 + "' where process_name = '" + process_name3 + "'"
-    query2 = "select * from uses where process_name = '" + process_name3 + "' and enzyme_name = '" + enzyme_name3 + "'"
+    query = "update uses set enzyme_name = '%s' where process_name = '%s'" % (enzyme_name3, process_name3)
+    query2 = "select * from uses where process_name = '%s' and enzyme_name = '%s'" % (process_name3, enzyme_name3)
 
 if enzyme_name4 and organelle and sub and sub4:
-    query = "update located_in set organelle = '" + organelle + "' and substructure = '" + sub + "' where enzyme_name = '" + enzyme_name4 + "' and substructure = '" + sub4 + "'"
-    query2 = "select * from located_in where enzyme_name = '" + enzyme_name4 + "'"
+    query = "update located_in set organelle = '%s', substructure = '%s' where enzyme_name = '%s' and substructure = '%s'" % (organelle, sub, enzyme_name4, sub4)
+    query2 = "select * from located_in where enzyme_name = '%s'" % enzyme_name4
     
 if organelle2 and sub2:
-    query = "update location set substructure = '" + sub2 + "' where organelle = '" + organelle2 + "' and substructure = '" + sub3 + "'"
-    query2 = "select * from location where organelle = '" + organelle2 + "' and substructure = '" + sub2 + "'"
+    query = "update location set substructure = '%s' where organelle = '%s' and substructure = '%s'" % (sub2, organelle2, sub3)
+    query2 = "select * from location where organelle = '%s' and substructure = '%s'" % (organelle2, sub2)
 
 if conc2 and comp and loc:
-    query = "update conds set prime_location = '" + loc + "' where concentration = '" + conc2 + "' and compound = '" + comp + "'"
-    query2 = "select * from conds where concentration = '" + conc2 +"' and compound = '" + comp + "' and prime_location = '" + loc + "'"
+    query = "update conds set prime_location = '%s' where concentration = '%s' and compound = '%s'" % (loc, conc2, comp)
+    query2 = "select * from conds where concentration = '%s' and compound = '%s' and prime_location = '%s'" % (conc2, comp, loc)
 
 
 hasError = False
