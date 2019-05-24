@@ -10,7 +10,7 @@ values       = form.getvalue('values')
 
 
 if values:   # make sure not empty to split
-    values = values.split(',')
+    values = values.split(', ')
 
 svalues = ""
 if values:
@@ -33,6 +33,7 @@ if not query:
     beghtml()
     print("<h3>You didn't fill anything out! :/</h3>")
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/insert.html">Back</a></b>')
+    print('<br><b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Home</a></b>')
     endhtml()
     hasError = True
     
@@ -50,7 +51,12 @@ if query:
 if hasError == False:
     # html with the response from the insert
     beghtml()
-    print("<h3>Inserted " + svalues + " into " + insert_table + "!</h3>")
+    print("<h3>")
+    temps = svalues.split(", ")
+    for s in temps:
+        print("<b> | " + s[1:-1])
+    print(" | </b></h3>")
+    print("<h3>is now in the table " + insert_table + "!</h3>")
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Try Something Else!</a></b><br><br>')
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/insert.html">Back</a></b>')
     endhtml()

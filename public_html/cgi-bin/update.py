@@ -73,14 +73,14 @@ if conc2 and comp and loc:
 
 
 hasError = False
-if not query:
+if not query: # blank form
     beghtml()
     print("<h3>You didn't fill anything out! :/</h3>")
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/update.html">Back</a></b>')
     endhtml()
     hasError = True
 
-if query:
+if query: # errors
     try:
         cursor.execute(query)
         cnx.commit()
@@ -89,6 +89,7 @@ if query:
         beghtml()
         print("Something went wrong: {}".format(err) + "<br><br>")
         print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/update.html">Back</a></b>')
+        print('<br><b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Home</a></b>')
         endhtml()
         hasError = True
 
@@ -99,7 +100,10 @@ if hasError == False:
     # html with the response from the update           
     beghtml()
     print("<h3>Updated!</h3>")
-    print("The database now reads", data)
+    print("The database now reads <br><br>")
+    for result in data[0]:
+        print("<b> | " + result)
+    print(" | </b>")
     print("<br><br>")
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Try Something Else!</a></b><br><br>')
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/update.html">Back</a></b>')

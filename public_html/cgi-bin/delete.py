@@ -59,6 +59,7 @@ if not query:
     beghtml()
     print("<h3>You didn't fill anything out! :/</h3>")
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/delete.html">Back</a></b>')
+    print('<br><b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Home</a></b>')
     endhtml()
     hasError = True
     
