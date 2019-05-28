@@ -37,6 +37,7 @@ query = ""  # initializing empty queries to avoid errors
 query2 = ""
 
 # depending on the user input assign the query
+# the second query searches for the updated data in the database and shows the user what they inputed
 # if multiple are filled in, the last one will be executed
 if enzyme_name and product_name:
     query = "update converts set product_name = '%s' where enzyme_name = '%s'" % (product_name, enzyme_name)
@@ -76,10 +77,11 @@ if conc2 and comp and loc:
 
 
 hasError = False
-if not query: # blank form
+if not query: # blank form - give the user option to go back or to the home page
     beghtml()
     print("<h3>You didn't fill anything out! :/</h3>")
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/update.html">Back</a></b>')
+    print('<br><b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Home</a></b>')
     endhtml()
     hasError = True
 

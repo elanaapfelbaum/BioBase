@@ -57,7 +57,7 @@ if process_name3 and conc2 and compound2:
     query = "delete from operates_uner where process_name = '%s' and concentration = '%s' and compound = '%s'" % (process_name3, conc2, compound2)
 
 
-# if empty form
+# if empty form - give the user an option to fill in something or go back to the home page
 hasError = False
 if not query:
     beghtml()
@@ -67,7 +67,7 @@ if not query:
     endhtml()
     hasError = True
 
-# checking for errors
+# checking for errors - if there is an error, show it on the screen
 try:
     cursor.execute(query)
     cnx.commit()

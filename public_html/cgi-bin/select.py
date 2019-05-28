@@ -3,7 +3,7 @@ import cgi
 import mysql.connector
 from html import beghtml, endhtml
 
-
+# getting values from the form
 form = cgi.FieldStorage()
 search_enzyme   = form.getvalue('search_enzyme')
 search_process1 = form.getvalue('search_process1')
@@ -25,7 +25,8 @@ query = ""
 key = ""
 
 # different options to select- assign query based on input
-# the second query is to print to the screen the new updated row
+# the last text box to be filled in on the form will be executed
+# the title helps with printing the result to the html
 if search_enzyme:
     query = "select process_name from uses where enzyme_name = '%s'"  % search_enzyme
     title = "Processes"
@@ -70,7 +71,8 @@ if search_enzyme4:
 if inter2:
     query = "select concenration from intermediate where intermediate_name = '%s'" % inter2
     title = "Concentrations"
-    
+
+# avoid error with empty form- give the user option to fill in information or go back to home page
 if not query:
     beghtml()
     print("<h3>You didn't fill anything out! :/</h3>")
@@ -79,8 +81,8 @@ if not query:
     endhtml()
     
 # catching errors- blank form, wrong syntax, etc
+# try executing query and spit back error to the screen if there is a problem
 hasError = False
-
 if query:
     try:
         cursor.execute(query)        
