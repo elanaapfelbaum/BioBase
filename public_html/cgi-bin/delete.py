@@ -4,6 +4,7 @@ import cgi
 import mysql.connector
 from html import beghtml, endhtml
 
+# getting all the values from the form
 form = cgi.FieldStorage()
 enzyme_name   = form.getvalue('enzyme_name')
 process_name  = form.getvalue('process_name')
@@ -26,6 +27,8 @@ cnx = mysql.connector.connect(user='eapfelba', database='eapfelba2', host='local
 query = ""
 cursor = cnx.cursor()
 
+# depending on the user input- assign the query
+# if multiple text boxes are filled, the last row to be filled in will be executed
 if enzyme_name:
     query = "delete from converts where enzyme_name = '%s'" % enzyme_name
 
@@ -54,6 +57,7 @@ if process_name3 and conc2 and compound2:
     query = "delete from operates_uner where process_name = '%s' and concentration = '%s' and compound = '%s'" % (process_name3, conc2, compound2)
 
 
+# if empty form
 hasError = False
 if not query:
     beghtml()
@@ -62,7 +66,8 @@ if not query:
     print('<br><b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Home</a></b>')
     endhtml()
     hasError = True
-    
+
+# checking for errors
 try:
     cursor.execute(query)
     cnx.commit()
@@ -74,10 +79,12 @@ except mysql.connector.Error as err:
     endhtm()
     hasError = True
 
+# otherwise print the repsonse to the screen
 if hasError == False:
     # html with the response from the delete 
     beghtml()
     print("<h3>Deleted!</h3>")                                      
+    print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/cgi-bin/showdb.py">Current Database</a></b><br><br>')
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Try Something Else!</a></b><br><br>')
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/delete.html">Back</a></b>')
     endhtml()

@@ -18,12 +18,14 @@ reac            = form.getvalue("reac")
 search_enzyme4  = form.getvalue("search_enzyme4")
 inter2          = form.getvalue("inter2")
 
+# establishing sql connection
 cnx = mysql.connector.connect(user='eapfelba', database='eapfelba2', host='localhost', password='chumash1000')
 cursor = cnx.cursor()
 query = ""
 key = ""
 
-# different options to select
+# different options to select- assign query based on input
+# the second query is to print to the screen the new updated row
 if search_enzyme:
     query = "select process_name from uses where enzyme_name = '%s'"  % search_enzyme
     title = "Processes"
@@ -76,7 +78,7 @@ if not query:
     print('<br><b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Home</a></b>')
     endhtml()
     
-# catching errors
+# catching errors- blank form, wrong syntax, etc
 hasError = False
 
 if query:
@@ -88,6 +90,7 @@ if query:
         endhtml()
         hasError = True
 
+# otherwise, print out the response
 if hasError == False:
     response = cursor.fetchall()
     beghtml()

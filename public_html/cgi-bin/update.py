@@ -4,6 +4,7 @@ import cgi
 import mysql.connector
 from html import beghtml, endhtml
 
+# getting all the values from the html form
 form = cgi.FieldStorage()
 enzyme_name    = form.getvalue('enzyme_name')
 product_name   = form.getvalue('product_name')
@@ -29,12 +30,14 @@ loc            = form.getvalue('loc')
 sub3           = form.getvalue('sub3')
 sub4           = form.getvalue('sub4')
 
+# establishing connection to the database
 cnx = mysql.connector.connect(user='eapfelba', database='eapfelba2', host='localhost', password='chumash1000')
 cursor = cnx.cursor(buffered=True)
-query = ""
+query = ""  # initializing empty queries to avoid errors
 query2 = ""
 
-
+# depending on the user input assign the query
+# if multiple are filled in, the last one will be executed
 if enzyme_name and product_name:
     query = "update converts set product_name = '%s' where enzyme_name = '%s'" % (product_name, enzyme_name)
     query2 = "select * from converts where product_name = '%s' and enzyme_name = '%s'" % (product_name, enzyme_name)
@@ -105,6 +108,7 @@ if hasError == False:
         print("<b> | " + result)
     print(" | </b>")
     print("<br><br>")
+    print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/cgi-bin/showdb.py">Current Database</a></b><br><br>')
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Try Something Else!</a></b><br><br>')
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/update.html">Back</a></b>')
     endhtml()

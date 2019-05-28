@@ -13,18 +13,19 @@
     <h3>Calling All Scientists!<br>Welcome to the database of biochemical processes and their interconnectedness. <br>Feel free to explore and update with current research!</h3>
    
     <form action = "cgi-bin/project.py" method = "get">
-      <b>New discovery?
-	<a href = "http://ada.sterncs.net/~eapfelbaum/insert.html">Add an element to the database!</a></b>
+      <b>New discovery? Add an element to the database 
+	<a href = "http://ada.sterncs.net/~eapfelbaum/insert.html">here</a></b>
       <br><br>
  
-      <b>Disprove a previous theory?
-	<a href = "http://ada.sterncs.net/~eapfelbaum/delete.html">Delete it!</a></b>
+      <b>Disprove a previous theory? Delete it
+	<a href = "http://ada.sterncs.net/~eapfelbaum/delete.html">here</a></b>
       <br><br>
 
-      <b><a href = "http://ada.sterncs.net/~eapfelbaum/update.html">Update with new information!</a></b>
+      <b>Update a piece of information
+	<a href = "http://ada.sterncs.net/~eapfelbaum/update.html">here</a></b>
       <br><br>
 
-      <b>Looking for something specific?<a href="http://ada.sterncs.net/~eapfelbaum/select.html"> Show me information!</a></b>
+      <b>Looking for something specific? Search for information <a href="http://ada.sterncs.net/~eapfelbaum/select.html">here</a></b>
       <br><br>
     </form>
   </body>
