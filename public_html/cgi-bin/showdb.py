@@ -18,6 +18,7 @@ query = 'select * from process'
 cursor.execute(query)
 
 print("<table>")
+print("<caption><b>Processes</b></caption>")
 print("<tr>")
 print("<th>Process</th>")
 print("<th>Goal Product</th>")
@@ -29,8 +30,6 @@ for result in cursor:
     print("</tr")
 print("</table>")
 print("<br>")
-print("<b>Processes</b>")
-print("<br>")
 
 
 # enzymes
@@ -38,6 +37,7 @@ query = 'select * from enzyme'
 cursor.execute(query)
 
 print("<table>")
+print("<caption><b>Enzymes</b></caption>")
 print("<tr>")
 print("<th>Enzyme</th>")
 print("<th>Ligand Mechanism</th>")
@@ -49,8 +49,6 @@ for result in cursor:
     print("</tr")
 print("</table>")
 print("<br>")
-print("<b>Enzymes</b>")
-print("<br>")
 
 
 # compounds
@@ -58,6 +56,7 @@ query = 'select * from intermediate'
 cursor.execute(query)
 
 print("<table>")
+print("<caption><b>Compounds</b></caption>")
 print("<tr>")
 print("<th>Compounds</th>")
 print("<th>Ligand Mechanism</th>")
@@ -69,13 +68,14 @@ for result in cursor:
     print("</tr")
 print("</table>")
 print("<br>")
-print("<b>Compounds</b>")
+
 
 # locations
 query = 'select * from location'
 cursor.execute(query)
 
 print("<table>")
+print("<caption><b>Locations</b></caption>")
 print("<tr>")
 print("<th>Organelle</th>")
 print("<th>Substructure</th>")
@@ -87,14 +87,13 @@ for result in cursor:
     print("</tr")
 print("</table>")
 print("<br>")
-print("<b>Locations</b>")
-print("<br>")
 
 # conditions
 query = 'select * from conds'
 cursor.execute(query)
 
 print("<table>")
+print("<caption><b>Conditions</b></caption>")
 print("<tr>")
 print("<th>Concentration</th>")
 print("<th>Compound</th>")
@@ -106,13 +105,14 @@ for result in cursor:
     print("</tr")
 print("</table>")
 print("<br>")
-print("<b>Conditions</b>")
+
 
 # uses
 query = 'select * from uses'
 cursor.execute(query)
 
 print("<table>")
+print("<caption><b>Enzymes Used by Processes</b></caption>")
 print("<tr>")
 print("<th>Process</th>")
 print("<th>Enzyme</th>")
@@ -124,14 +124,13 @@ for result in cursor:
     print("</tr")
 print("</table>")
 print("<br>")
-print("<b>Enzymes Used by Processes</b>")
-print("<br>")
 
 # operates_under
 query = 'select * from operates_under'
 cursor.execute(query)
 
 print("<table>")
+print("<caption><b>Conditions Under Which Processes Operate</b></caption>")
 print("<tr>")
 print("<th>Process</th>")
 print("<th>Concentration</th>")
@@ -145,14 +144,13 @@ for result in cursor:
     print("</tr")
 print("</table>")
 print("<br>")
-print("<b>Conditions Under Which Processes Operate</b>")
-print("<br>")
 
 # converts
 query = 'select * from converts'
 cursor.execute(query)
 
 print("<table>")
+print("<caption><b>Enzyme Reactions</b></caption>")
 print("<tr>")
 print("<th>Enzyme</th>")
 print("<th>Reactant</th>")
@@ -170,14 +168,13 @@ for result in cursor:
     print("</tr")
 print("</table>")
 print("<br>")
-print("<b>Enzyme Reactions</b>")
-print("<br>")
 
 # located_in
 query = 'select * from located_in'
 cursor.execute(query)
 
 print("<table>")
+print("<caption><b>Locations of Enzymes</b></caption>")
 print("<tr>")
 print("<th>Enzyme</th>")
 print("<th>Organelle</th>")
@@ -190,8 +187,6 @@ for result in cursor:
     print("<td>" + result[2] + "</td>")
     print("</tr")
 print("</table>")
-print("<br>")
-print("<b>Locations of Enzymes</b>")
 print("<br>")
 
 cursor.close()

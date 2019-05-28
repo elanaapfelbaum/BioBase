@@ -10,13 +10,15 @@ cursor = cnx.cursor()
 # making tables from the results of the select statements
 # this is to get the entire databse on one page of html
 beghtml()
-print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Back to Home</a></b><br><br>')
+# link to home page
+# print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Back to Home</a></b><br><br>')
 
 # processes
 query = 'select * from process'
 cursor.execute(query)
 
 print("<table>")
+print("<caption><b>Processes</b></caption>")
 print("<tr>")
 print("<th>Process</th>")
 print("<th>Goal Product</th>")
@@ -28,13 +30,14 @@ for result in cursor:
     print("</tr")
 print("</table>")
 print("<br>")
-print("<b>Processes</b>")
+
 
 # enzymes
 query = 'select * from enzyme'
 cursor.execute(query)
 
 print("<table>")
+print("<caption><b>Enzymes</b></caption>")
 print("<tr>")
 print("<th>Enzyme</th>")
 print("<th>Ligand Mechanism</th>")
@@ -46,13 +49,14 @@ for result in cursor:
     print("</tr")
 print("</table>")
 print("<br>")
-print("<b>Enzymes</b>")
+
 
 # compounds
 query = 'select * from intermediate'
 cursor.execute(query)
 
 print("<table>")
+print("<caption><b>Compounds</b></caption>")
 print("<tr>")
 print("<th>Compounds</th>")
 print("<th>Ligand Mechanism</th>")
@@ -64,13 +68,14 @@ for result in cursor:
     print("</tr")
 print("</table>")
 print("<br>")
-print("<b>Compounds</b>")
+
 
 # locations
 query = 'select * from location'
 cursor.execute(query)
 
 print("<table>")
+print("<caption><b>Locations</b></caption>")
 print("<tr>")
 print("<th>Organelle</th>")
 print("<th>Substructure</th>")
@@ -82,13 +87,13 @@ for result in cursor:
     print("</tr")
 print("</table>")
 print("<br>")
-print("<b>Locations</b>")
 
 # conditions
 query = 'select * from conds'
 cursor.execute(query)
 
 print("<table>")
+print("<caption><b>Conditions</b></caption>")
 print("<tr>")
 print("<th>Concentration</th>")
 print("<th>Compound</th>")
@@ -100,13 +105,14 @@ for result in cursor:
     print("</tr")
 print("</table>")
 print("<br>")
-print("<b>Conditions</b>")
+
 
 # uses
 query = 'select * from uses'
 cursor.execute(query)
 
 print("<table>")
+print("<caption><b>Enzymes Used by Processes</b></caption>")
 print("<tr>")
 print("<th>Process</th>")
 print("<th>Enzyme</th>")
@@ -118,13 +124,13 @@ for result in cursor:
     print("</tr")
 print("</table>")
 print("<br>")
-print("<b>Enzymes Used by Processes</b>")
 
 # operates_under
 query = 'select * from operates_under'
 cursor.execute(query)
 
 print("<table>")
+print("<caption><b>Conditions Under Which Processes Operate</b></caption>")
 print("<tr>")
 print("<th>Process</th>")
 print("<th>Concentration</th>")
@@ -138,13 +144,13 @@ for result in cursor:
     print("</tr")
 print("</table>")
 print("<br>")
-print("<b>Conditions Under Which Processes Operate</b>")
 
 # converts
 query = 'select * from converts'
 cursor.execute(query)
 
 print("<table>")
+print("<caption><b>Enzyme Reactions</b></caption>")
 print("<tr>")
 print("<th>Enzyme</th>")
 print("<th>Reactant</th>")
@@ -162,14 +168,13 @@ for result in cursor:
     print("</tr")
 print("</table>")
 print("<br>")
-print("<b>Enzyme Reactions</b>")
-
 
 # located_in
 query = 'select * from located_in'
 cursor.execute(query)
 
 print("<table>")
+print("<caption><b>Locations of Enzymes</b></caption>")
 print("<tr>")
 print("<th>Enzyme</th>")
 print("<th>Organelle</th>")
@@ -183,9 +188,8 @@ for result in cursor:
     print("</tr")
 print("</table>")
 print("<br>")
-print("<b>Locations of Enzymes</b>")
-print("<br><br>")
 
 cursor.close()
 cnx.close()
+print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Back to Home</a></b><br><br>')
 endhtml()
