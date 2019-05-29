@@ -93,7 +93,7 @@ if query:
         endhtml()
         hasError = True
 
-# otherwise, print out the response
+# otherwise, print out the response with links back and to home
 if hasError == False:
     response = cursor.fetchall()
     beghtml()
@@ -104,7 +104,7 @@ if hasError == False:
         print("<h3>%s</h3>" % title) 
         for r in response:
             print("<b> %s" % r[0])
-            if key:
+            if key:  # if there was a second value of the data like (concentration, compound)
                 print("%s</br>" % r[1])
             print("<br>")
     print("</b><br>")

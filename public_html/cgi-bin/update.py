@@ -97,20 +97,24 @@ if query: # errors
         print('<br><b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Home</a></b>')
         endhtml()
         hasError = True
-
+        
+# if there were no errors when executing the first query, continue executing the second
 if hasError == False:
     cursor.execute(query2)
     data = cursor.fetchall()
     
     # html with the response from the update           
     beghtml()
-    #print("<h3>Updated!</h3>")
-    #print("The database now reads <br><br>")
+    
+    # if the first query did not come up with an error but the second did (typo, value not in the table)
+    # i.e. the select statement came up with nothing..
+    # print that something went wrong and give an option to go back
     if not data:
         print("<h3><b>Something went wrong </b></h3>")
         print("<b>Check your spelling!</b><br><br>")
         print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/update.html">Back</a></b>')
         print('<br><b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Home</a></b>')
+    # otherwise, you want to print out what the database not reads
     else:
         print("<h3>Updated!</h3>")
         print("The database now reads <br><br>")

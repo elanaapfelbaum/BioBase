@@ -22,7 +22,7 @@ organelle2    = form.getvalue("organelle2")
 conc2         = form.getvalue("conc2")
 compound2     = form.getvalue("compound2")
 
-
+# establishing connection, cursor
 cnx = mysql.connector.connect(user='eapfelba', database='eapfelba2', host='localhost', password='chumash1000')
 query = ""
 cursor = cnx.cursor()

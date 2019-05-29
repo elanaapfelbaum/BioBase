@@ -54,9 +54,10 @@ if query:
 if hasError == False:
     beghtml()
     print("<h3>")
+    # print them out in the right format for the results page
     temps = svalues.split(", ")
     for s in temps:
-        print("<b> | " + s[1:-1])
+        print("<b> | %s" % s[1:-1])
     print(" | </b></h3>")
     print("<h3>is now in the table %s!</h3>" % insert_table)
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/cgi-bin/showdb.py">Current Database</a></b><br><br>')
