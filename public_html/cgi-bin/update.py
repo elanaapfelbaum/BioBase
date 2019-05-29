@@ -40,41 +40,58 @@ query2 = ""
 # the second query searches for the updated data in the database and shows the user what they inputed
 # if multiple are filled in, the last one will be executed
 if enzyme_name and product_name:
-    query = "update converts set product_name = '%s' where enzyme_name = '%s'" % (product_name, enzyme_name)
-    query2 = "select * from converts where product_name = '%s' and enzyme_name = '%s'" % (product_name, enzyme_name)
+    query = "update converts set product_name = %s where enzyme_name = %s"
+    v1 = (product_name, enzyme_name)
+    query2 = "select * from converts where product_name = %s and enzyme_name = %s"
+    v2 = (product_name, enzyme_name)
     
 if enzyme_name2 and mechanism_name:
-    query = "update enzyme set ligand_mechanism = '%s' where enzyme_name = '%s'" % (mechanism_name, enzyme_name2)
-    query2 = "select * from enzyme where enzyme_name = '%s'" % enzyme_name2
+    query = "update enzyme set ligand_mechanism = %s where enzyme_name = %s"
+    v1 = (mechanism_name, enzyme_name2)
+    query2 = "select * from enzyme where enzyme_name = %s"
+    v2 = (enzyme_name2,)
     
 if process_name and concentration and compound_name:
-    query = "update operates_under set concentration = '%s', compound = '%s' where process_name = '%s'" % (concentration, compound_name, process_name)
-    query2 = "select * from operates_under where process_name = '%s'" % process_name
-
+    query = "update operates_under set concentration = %s, compound = %s where process_name = %s"
+    v1 = (concentration, compound_name, process_name)
+    query2 = "select * from operates_under where process_name = %s"
+    v2 = (process_name,)
+    
 if process_name2 and goal:
-    query = "update process set goal_product = '%s' where process_name = '%s'" % (goal, process_name2)
-    query2 = "select * from process where process_name = '%s'" % process_name2
+    query = "update process set goal_product = %s where process_name = %s"
+    v1 = (goal, process_name2)
+    query2 = "select * from process where process_name = %s"
+    v2 = (process_name2,)
 
 if inter and conc:
-    query = "update intermediate set concenration = '%s' where intermediate_name = '%s'" % (conc, inter)
-    query2 = "select * from intermediate where intermediate_name = '%s'" % inter
-
+    query = "update intermediate set concenration = %s where intermediate_name = %s" 
+    v1 = (conc, inter)
+    query2 = "select * from intermediate where intermediate_name = %s" 
+    v2 = (inter,)
+    
 if process_name3 and enzyme_name3:
-    query = "update uses set enzyme_name = '%s' where process_name = '%s'" % (enzyme_name3, process_name3)
-    query2 = "select * from uses where process_name = '%s' and enzyme_name = '%s'" % (process_name3, enzyme_name3)
-
+    query = "update uses set enzyme_name = %s where process_name = %s"
+    v1 = (enzyme_name3, process_name3)
+    query2 = "select * from uses where process_name = %s and enzyme_name = %s"
+    v2 = (process_name3, enzyme_name3)
+    
 if enzyme_name4 and organelle and sub and sub4:
-    query = "update located_in set organelle = '%s', substructure = '%s' where enzyme_name = '%s' and substructure = '%s'" % (organelle, sub, enzyme_name4, sub4)
-    query2 = "select * from located_in where enzyme_name = '%s'" % enzyme_name4
+    query = "update located_in set organelle = %s, substructure = %s where enzyme_name = %s and substructure = %s" 
+    v1 = (organelle, sub, enzyme_name4, sub4)
+    query2 = "select * from located_in where enzyme_name = %s"
+    v2 = (enzyme_name4,)
     
 if organelle2 and sub2:
-    query = "update location set substructure = '%s' where organelle = '%s' and substructure = '%s'" % (sub2, organelle2, sub3)
-    query2 = "select * from location where organelle = '%s' and substructure = '%s'" % (organelle2, sub2)
-
+    query = "update location set substructure = %s where organelle = %s and substructure = %s"
+    v1 = (sub2, organelle2, sub3)
+    query2 = "select * from location where organelle = %s and substructure = %s" 
+    v2 = (sub2, organelle2, sub3)
+    
 if conc2 and comp and loc:
-    query = "update conds set prime_location = '%s' where concentration = '%s' and compound = '%s'" % (loc, conc2, comp)
-    query2 = "select * from conds where concentration = '%s' and compound = '%s' and prime_location = '%s'" % (conc2, comp, loc)
-
+    query = "update conds set prime_location = %s where concentration = %s and compound = %s"
+    v1 = (loc, conc2, comp)
+    query2 = "select * from conds where concentration = %s and compound = %s and prime_location = %s"
+    v2 = (conc2, comp, loc)
 
 hasError = False
 if not query: # blank form - give the user option to go back or to the home page
@@ -87,7 +104,7 @@ if not query: # blank form - give the user option to go back or to the home page
 
 if query: # errors
     try:
-        cursor.execute(query)
+        cursor.execute(query, v1)
         cnx.commit()
 
     except mysql.connector.Error as err:
@@ -100,7 +117,7 @@ if query: # errors
         
 # if there were no errors when executing the first query, continue executing the second
 if hasError == False:
-    cursor.execute(query2)
+    cursor.execute(query2, v2)
     data = cursor.fetchall()
     
     # html with the response from the update           

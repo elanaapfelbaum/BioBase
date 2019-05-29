@@ -30,32 +30,40 @@ cursor = cnx.cursor()
 # depending on the user input- assign the query
 # if multiple text boxes are filled, the last row to be filled in will be executed
 if enzyme_name:
-    query = "delete from converts where enzyme_name = '%s'" % enzyme_name
-
-if enzyme_name3:
-    query = "delete from enzyme where enzyme_name = '%s'" % enzyme_name3
+    query = "delete from converts where enzyme_name = %s" 
+    v = (enzyme_name,)
     
+if enzyme_name3:
+    query = "delete from enzyme where enzyme_name = %s"
+    v = (enzyme_name3,)
+
 if process_name:
-    query = "delete from process where process_name = '%s'" % process_name
-
+    query = "delete from process where process_name = %s"
+    v = (process_name,)
+    
 if process_name2 and enzyme_name2:
-    query = "delete from uses where process_name = '%s' and enzyme_name = '%s'" % (process_name2, enzyme_name2)
-
+    query = "delete from uses where process_name = %s and enzyme_name = %s" 
+    v = (process_name2, enzyme_name2)
+    
 if conc and compound:
-    query = "delete from conds where concentration = '%s' and compound = '%s'" % (conc, compound)
-
+    query = "delete from conds where concentration = %s and compound = %s"
+    v = (conc, compound)
+    
 if intermediate:
-    query = "delete from intermediate where intermediate_name = '%s'" % intermediate
-
+    query = "delete from intermediate where intermediate_name = %s"
+    v = (intermediate,)
+    
 if organelle and sub:
-    query = "delete from location where organelle = '%s' and substructure = '%s'" % (organelle, sub)
+    query = "delete from location where organelle = %s and substructure = %s"
+    v = (organelle, sub)
 
 if enzyme_name3 and organelle2:
-    query = "delete from located_in where enzyme_name = '%s' and organelle = '%s'" % (enzyme_name3, organelle2)
-
+    query = "delete from located_in where enzyme_name = %s and organelle = %s"
+    v = (enzyme_name3, organelle2)
+    
 if process_name3 and conc2 and compound2:
-    query = "delete from operates_uner where process_name = '%s' and concentration = '%s' and compound = '%s'" % (process_name3, conc2, compound2)
-
+    query = "delete from operates_uner where process_name = %s and concentration = %s and compound = %s"
+    v = (process_name3, conc2, compound2)
 
 # if empty form - give the user an option to fill in something or go back to the home page
 hasError = False
@@ -69,7 +77,7 @@ if not query:
 
 # checking for errors - if there is an error, show it on the screen
 try:
-    cursor.execute(query)
+    cursor.execute(query, v)
     cnx.commit()
     
 except mysql.connector.Error as err:

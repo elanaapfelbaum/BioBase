@@ -28,50 +28,61 @@ key = ""
 # the last text box to be filled in on the form will be executed
 # the title helps with printing the result to the html
 if search_enzyme:
-    query = "select process_name from uses where enzyme_name = '%s'"  % search_enzyme
+    query = "select process_name from uses where enzyme_name = %s"
     title = "Processes"
+    v = (search_enzyme,)
     
 if search_process1:
-    query = "select enzyme_name from uses where process_name = '%s'" % search_process1
+    query = "select enzyme_name from uses where process_name = %s"
     title = "Enzymes"
+    v = (search_process1,)
     
 if search_process2:
-    query = "select distinct organelle from uses natural join located_in where process_name = '%s'" % search_process2
+    query = "select distinct organelle from uses natural join located_in where process_name = %s"
     title = "Organelles"
+    v = (search_process2,)
     
 if search_enzyme2:
-    query = "select ligand_mechanism from enzyme where enzyme_name = '%s'" % search_enzyme2
+    query = "select ligand_mechanism from enzyme where enzyme_name = %s"
     title = "Ligand Mechanisms"
+    v = (search_enzyme2,)
     
 if search_process3:
-    query = "select goal_product from process where process_name = '%s'" % search_process3
+    query = "select goal_product from process where process_name = %s"
     title = "Goal Products"
+    v = (search_process3,) 
     
 if sub:
-    query = "select organelle from location where substructure = '%s'" % sub
+    query = "select organelle from location where substructure = %s"
     title = "Organelles"
+    v = (sub,)
     
 if inter:
-    query = "select concentration from conds where compound = '%s'" % inter
+    query = "select concentration from conds where compound = %s"
     title = "Concentrations"
+    v = (inter,)
 
 # keep track of an extra variable so that it will know to print an extra line of results (onyl query with a tuple result)
 if search_process5: 
-    query = "select concentration, compound from operates_under where process_name = '%s'" % search_process5
+    query = "select concentration, compound from operates_under where process_name = %s"
     title = "Conditions"
     key = 'one'
+    v = (search_process5,)
     
 if search_enzyme3 and reac:
-    query = "select product_name from converts where enzyme_name = '%s' and reactant_name = '%s'" % (search_enzyme3, reac)
+    query = "select product_name from converts where enzyme_name = %s and reactant_name = %s"
     title = "Products"
+    v = (search_enzyme3, reac)
     
 if search_enzyme4:
-    query = "select organelle from located_in where enzyme_name = '%s'" % search_enzyme4
+    query = "select organelle from located_in where enzyme_name = %s" 
     title = "Organelles"
+    v = (search_enzyme4,)
     
 if inter2:
-    query = "select concenration from intermediate where intermediate_name = '%s'" % inter2
+    query = "select concenration from intermediate where intermediate_name = %s"
     title = "Concentrations"
+    v = (inter2,)
 
 # avoid error with empty form- give the user option to fill in information or go back to home page
 if not query:
@@ -86,7 +97,7 @@ if not query:
 hasError = False
 if query:
     try:
-        cursor.execute(query)        
+        cursor.execute(query, v)        
     except mysql.connector.Error as err:
         print("<b>Something went wrong:</b> {}".format(err) + "<br><br>")
         print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/select.html">Back</a></b>')

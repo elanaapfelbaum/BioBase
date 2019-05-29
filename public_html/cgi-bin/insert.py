@@ -9,16 +9,13 @@ form = cgi.FieldStorage()
 insert_table = form.getvalue('insert_table')
 values       = form.getvalue('values')
 
-
-if values:   # make sure not empty to split and then split on the comma
-    values = values.split(', ')
-
-svalues = ""
+# if values were inserted, split on the comma and concatenate the right amount of %s for the prepared statement
 if values:
+    values = values.split(', ')
+    valueQuery = "("
     for value in values:
-        # concatenate them into the appropriate syntax, removing any unnecessary whitespace
-        svalues += "'%s', " % value.strip()
-    svalues = svalues[:-2]
+        valueQuery += "%s, "
+    valueQuery = valueQuery[:-2] + ")"
 
 # mysql connection
 cnx = mysql.connector.connect(user='eapfelba', host = 'localhost', database='eapfelba2', password='chumash1000')
@@ -26,9 +23,11 @@ query=""  # intialized as empty to prevent errors
 cursor = cnx.cursor()
 
 # creating the query based on the user input
+# the insert_table cannot be inserted using prepared statements bc of the implicitly assigned quotes- this is vulnerable to SQL injection (even though only from the drop down)
 if insert_table and values:
-    query = "insert into %s values (%s)" % (insert_table, svalues)
-
+    query = "insert into " + insert_table + " values " + valueQuery    
+    v = tuple(values)  # making a tuple of the values inputed from the form to put in the execute statement
+    
 # checking for errors
 hasError = False
 if not query:  # empty form
@@ -41,7 +40,7 @@ if not query:  # empty form
     
 if query:
     try: # try to execute the query, otherwise print out the issue on an html page and give the user options to go back
-        cursor.execute(query)
+        cursor.execute(query, v)
         cnx.commit()   
     except mysql.connector.Error as err:
         beghtml()
@@ -55,9 +54,8 @@ if hasError == False:
     beghtml()
     print("<h3>")
     # print them out in the right format for the results page
-    temps = svalues.split(", ")
-    for s in temps:
-        print("<b> | %s" % s[1:-1])
+    for s in values:
+        print("<b> | %s" % s)
     print(" | </b></h3>")
     print("<h3>is now in the table %s!</h3>" % insert_table)
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/cgi-bin/showdb.py">Current Database</a></b><br><br>')
