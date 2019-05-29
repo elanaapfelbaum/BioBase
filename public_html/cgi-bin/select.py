@@ -36,7 +36,7 @@ if search_process1:
     title = "Enzymes"
     
 if search_process2:
-    query = "select distinct organelle from uses, located_in where process_name = '%s'" % search_process2
+    query = "select distinct organelle from uses natural join located_in where process_name = '%s'" % search_process2
     title = "Organelles"
     
 if search_enzyme2:
