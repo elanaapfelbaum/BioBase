@@ -89,7 +89,7 @@ if query: # errors
     try:
         cursor.execute(query)
         cnx.commit()
-    
+
     except mysql.connector.Error as err:
         beghtml()
         print("Something went wrong: {}".format(err) + "<br><br>")
@@ -104,15 +104,23 @@ if hasError == False:
     
     # html with the response from the update           
     beghtml()
-    print("<h3>Updated!</h3>")
-    print("The database now reads <br><br>")
-    for result in data[0]:
-        print("<b> | %s" % result)
-    print(" | </b>")
-    print("<br><br>")
-    print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/cgi-bin/showdb.py">Current Database</a></b><br><br>')
-    print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Try Something Else!</a></b><br><br>')
-    print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/update.html">Back</a></b>')
+    #print("<h3>Updated!</h3>")
+    #print("The database now reads <br><br>")
+    if not data:
+        print("<h3><b>Something went wrong </b></h3>")
+        print("<b>Check your spelling!</b><br><br>")
+        print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/update.html">Back</a></b>')
+        print('<br><b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Home</a></b>')
+    else:
+        print("<h3>Updated!</h3>")
+        print("The database now reads <br><br>")
+        for result in data[0]:
+            print("<b> | %s" % result)
+        print(" | </b>")
+        print("<br><br>")
+        print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/cgi-bin/showdb.py">Current Database</a></b><br><br>')
+        print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Try Something Else!</a></b><br><br>')
+        print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/update.html">Back</a></b>')
     endhtml()
 
 
