@@ -17,7 +17,7 @@ svalues = ""
 if values:
     for value in values:
         # concatenate them into the appropriate syntax, removing any unnecessary whitespace
-        svalues += "'" + value.strip() + "', "
+        svalues += "'%s', " % value.strip()
     svalues = svalues[:-2]
 
 # mysql connection
