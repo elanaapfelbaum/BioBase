@@ -54,8 +54,9 @@ if sub:
 if inter:
     query = "select concentration from conds where compound = '%s'" % inter
     title = "Concentrations"
-    
-if search_process5:
+
+# keep track of an extra variable so that it will know to print an extra line of results (onyl query with a tuple result)
+if search_process5: 
     query = "select concentration, compound from operates_under where process_name = '%s'" % search_process5
     title = "Conditions"
     key = 'one'
@@ -100,11 +101,11 @@ if hasError == False:
         print("<h3>no results found</h3>")
     else:
         print("<h3>Results!</h3>")
-        print("<h3>" + title + "</h3>") 
+        print("<h3>%s</h3>" % title) 
         for r in response:
-            print("<b>" + r[0])
+            print("<b> %s" % r[0])
             if key:
-                print(r[1] + "</br>")
+                print("%s</br>" % r[1])
             print("<br>")
     print("</b><br>")
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Try Something Else!</a></b><br><br>')

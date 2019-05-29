@@ -48,7 +48,7 @@ if enzyme_name2 and mechanism_name:
     query2 = "select * from enzyme where enzyme_name = '%s'" % enzyme_name2
     
 if process_name and concentration and compound_name:
-    query = "update operates_under set concentration = '%s', compound = '%s' where process_name = '%s'" % (concentration, compound, process_name)
+    query = "update operates_under set concentration = '%s', compound = '%s' where process_name = '%s'" % (concentration, compound_name, process_name)
     query2 = "select * from operates_under where process_name = '%s'" % process_name
 
 if process_name2 and goal:
@@ -107,7 +107,7 @@ if hasError == False:
     print("<h3>Updated!</h3>")
     print("The database now reads <br><br>")
     for result in data[0]:
-        print("<b> | " + result)
+        print("<b> | %s" % result)
     print(" | </b>")
     print("<br><br>")
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/cgi-bin/showdb.py">Current Database</a></b><br><br>')

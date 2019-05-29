@@ -58,7 +58,7 @@ if hasError == False:
     for s in temps:
         print("<b> | " + s[1:-1])
     print(" | </b></h3>")
-    print("<h3>is now in the table " + insert_table + "!</h3>")
+    print("<h3>is now in the table %s!</h3>" % insert_table)
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/cgi-bin/showdb.py">Current Database</a></b><br><br>')
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/biobase.html">Try Something Else!</a></b><br><br>')
     print('<b><a href = "http://ada.sterncs.net/~eapfelbaum/insert.html">Back</a></b>')
